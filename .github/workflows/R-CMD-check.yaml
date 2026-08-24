@@ -108,7 +108,7 @@ jobs:
         # `pip install pygeopalette==0.6.1` replaces this once it is.
         run: |
           python -m pip install --upgrade pip
-          python -m pip install "pygeopalette @ git+https://github.com/igorpawelec/pygeopalette.git@v0.6.1"
+          python -m pip install "pygeopalette @ git+https://github.com/igorpawelec/pygeopalette.git@v0.7.0"
 
       - name: Check the version declarations agree
         # CITATION.cff is .Rbuildignore'd, so R CMD check never sees it.

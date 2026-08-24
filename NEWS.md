@@ -1,5 +1,15 @@
 # rgeopalette 0.1.0
 
+
+# rgeopalette 0.2.0
+
+## Changed
+
+* **Renamed from `GeoPaletteR`.** The package name is now `rgeopalette`, which is a
+  breaking change for `library()` calls and for any dependency on it. The
+  algorithms and the results are unchanged.
+
+
 First release. The R twin of the pygeopalette Python package.
 
 * Fifteen forward conversions — `hsl`, `hsv`, `hsi`, `lab`, `dlab`,

@@ -1,7 +1,7 @@
 Package: rgeopalette
 Type: Package
 Title: Colour Space Conversions for Geospatial Raster Data
-Version: 0.1.0
+Version: 0.2.0
 Authors@R: person("Igor", "Pawelec", email = "igor.pawelec@urk.edu.pl",
                   role = c("aut", "cre"),
                   comment = c(ORCID = "0009-0005-9798-3596"))
