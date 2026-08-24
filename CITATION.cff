@@ -1,5 +1,5 @@
 cff-version: 1.2.0
-title: "GeoPaletteR — Colour space conversions for geospatial raster data"
+title: "rgeopalette — Colour space conversions for geospatial raster data"
 message: "If you use this software, please cite it as below."
 type: software
 authors:
@@ -8,7 +8,7 @@ authors:
     affiliation: "University of Agriculture in Kraków, Poland"
     email: igor.pawelec@urk.edu.pl
     orcid: "https://orcid.org/0009-0005-9798-3596"
-repository-code: "https://github.com/igorpawelec/GeoPaletteR"
+repository-code: "https://github.com/igorpawelec/rgeopalette"
 license: GPL-3.0-or-later
 version: "0.1.0"
 date-released: "2026-07-21"
@@ -65,12 +65,12 @@ references:
     url: "https://bottosson.github.io/posts/oklab/"
     notes: "Implemented by rgb_to_oklab() and oklab_to_rgb()."
   - type: software
-    title: "GeoPalette — the Python implementation of the same conversions"
+    title: "pygeopalette — the Python implementation of the same conversions"
     authors:
       - family-names: Pawelec
         given-names: Igor
-    url: "https://github.com/igorpawelec/GeoPalette"
+    url: "https://github.com/igorpawelec/pygeopalette"
     notes: >-
-      Agreement is measured rather than exact: GeoPalette stores intermediates
+      Agreement is measured rather than exact: pygeopalette stores intermediates
       in single precision where R has only double, so the two agree to better
-      than 1.7e-6 of each component's range. See ?GeoPaletteR-agreement.
+      than 1.7e-6 of each component's range. See ?rgeopalette-agreement.

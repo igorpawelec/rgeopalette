@@ -18,7 +18,7 @@ A named list of three matrices: `x` and `y_ch` (chromaticity) and
 RGB to CIE xyY
 }
 \details{
-The component names carry the `_ch` and `_lum` suffixes that GeoPalette
+The component names carry the `_ch` and `_lum` suffixes that pygeopalette
 uses, so that band files written from either package line up. `y_ch` is a
 chromaticity in 0-1 and `Y_lum` is a luminance; they are not the same
 quantity despite the letters.

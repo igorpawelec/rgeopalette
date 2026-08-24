@@ -33,7 +33,7 @@ produce plausible-looking output:
 
 The PQ curve carries an exponent of 134, which amplifies small input
 differences. That is why this space needs a looser tolerance than the
-others when comparing against GeoPalette — see `?GeoPaletteR-agreement`.
+others when comparing against pygeopalette — see `?rgeopalette-agreement`.
 }
 \examples{
 R <- matrix(c(255, 0), 1, 2); G <- matrix(c(255, 0), 1, 2)

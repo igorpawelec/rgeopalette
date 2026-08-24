@@ -27,9 +27,9 @@
 #' `NA` propagates through the arithmetic and comes out as `NA`. Pixels
 #' that are merely *achromatic* are a different matter: their hue is
 #' genuinely undefined, and every function here returns 0 for it rather
-#' than `NaN`, matching GeoPalette. Grey, white, black, deep shadow and
+#' than `NaN`, matching pygeopalette. Grey, white, black, deep shadow and
 #' still water are all achromatic, so this is not an edge case in real
 #' imagery.
 #'
-#' @name GeoPaletteR-conventions
+#' @name rgeopalette-conventions
 NULL

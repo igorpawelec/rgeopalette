@@ -3,7 +3,7 @@
 #
 # terra is a Suggests, so this file is a no-op when it is absent.
 
-library(GeoPaletteR)
+library(rgeopalette)
 
 if (!requireNamespace("terra", quietly = TRUE)) {
   cat("terra not installed; skipping the raster bridge tests\n")

@@ -1,6 +1,6 @@
-# Measure how far GeoPaletteR sits from GeoPalette, component by component.
+# Measure how far rgeopalette sits from pygeopalette, component by component.
 #
-# This cannot be an equality check and never will be. GeoPalette stores its
+# This cannot be an equality check and never will be. pygeopalette stores its
 # intermediates as float32; R has no float32, so this package computes the
 # whole chain in double. The two therefore disagree at roughly the seventh
 # significant figure by construction, and the gap is amplified by whatever
@@ -8,20 +8,20 @@
 # 134, so it amplifies hard.
 #
 # The point of this script is to put a number on that per component, so the
-# figures quoted in ?GeoPaletteR-agreement and in the README are measured
+# figures quoted in ?rgeopalette-agreement and in the README are measured
 # rather than guessed. It lives in tools/ and not tests/ because it needs
-# Python and GeoPalette installed, which CRAN machines do not have.
+# Python and pygeopalette installed, which CRAN machines do not have.
 #
-#   python3 tools/generate_geopalette_reference.py
-#   Rscript tools/cross_validate_against_geopalette.R
+#   python3 tools/generate_pygeopalette_reference.py
+#   Rscript tools/cross_validate_against_pygeopalette.R
 #
 # Copyright (C) 2025 Igor Pawelec. Licence: GPLv3.
 
-library(GeoPaletteR)
+library(rgeopalette)
 
 dir <- file.path("tools", "reference")
 if (!dir.exists(dir))
-  stop("run tools/generate_geopalette_reference.py first", call. = FALSE)
+  stop("run tools/generate_pygeopalette_reference.py first", call. = FALSE)
 
 rd <- function(f) as.matrix(utils::read.csv(file.path(dir, paste0(f, ".csv")),
                                             header = FALSE))
@@ -33,7 +33,7 @@ spaces <- utils::read.csv(file.path(dir, "spaces.csv"), header = FALSE,
 
 # Hue angles derived with atan2 are undefined on the neutral axis, where
 # the opponent pair is 0 and only float noise decides the angle. Comparing
-# them there measures nothing: on a pure grey GeoPalette reports 0, 90 or
+# them there measures nothing: on a pure grey pygeopalette reports 0, 90 or
 # 141.34 depending on the pixel, and this package reports 158.199. Both are
 # artefacts. So each such hue is compared only where its own chroma is
 # meaningful, and the skipped pixels are counted rather than hidden.
@@ -124,7 +124,7 @@ bad <- rw[rw > TOL_REL]
 if (length(bad)) {
   cat("\nOVER TOLERANCE:\n")
   for (nm in names(bad)) cat(sprintf("  %-24s %.3e\n", nm, bad[[nm]]))
-  stop("GeoPaletteR has drifted from GeoPalette by more than ", TOL_REL,
+  stop("rgeopalette has drifted from pygeopalette by more than ", TOL_REL,
        " of a component's range", call. = FALSE)
 }
 cat(sprintf("\nall %d components agree to within %g of their range\n",

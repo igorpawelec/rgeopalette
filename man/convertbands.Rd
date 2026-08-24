@@ -19,7 +19,7 @@ any other space is an error rather than a silent no-op.}
 \value{
 A named list of matrices. The names are the component names for
   that space — `L`, `a`, `b` for `"lab"`, and so on — which is also what
-  GeoPalette returns alongside its arrays.
+  pygeopalette returns alongside its arrays.
 }
 \description{
 A dispatcher over every `rgb_to_*` function, for when the target space is

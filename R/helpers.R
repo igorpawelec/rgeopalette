@@ -1,9 +1,9 @@
 # Internal helpers shared by every conversion.
 #
-# GeoPalette (Python) stores intermediates as float32. R has no float32 —
+# pygeopalette (Python) stores intermediates as float32. R has no float32 —
 # every numeric is a double — so this package computes the whole chain in
-# double and agrees with GeoPalette only to that storage precision. See
-# ?GeoPaletteR-agreement for the measured tolerances; do not "fix" a
+# double and agrees with pygeopalette only to that storage precision. See
+# ?rgeopalette-agreement for the measured tolerances; do not "fix" a
 # fifth-decimal difference against the Python output, it is expected.
 
 # D65 white point, sRGB reference.
@@ -31,7 +31,7 @@
 #
 # R's `x^(1/3)` is NaN for negative x, so the naive translation of numpy's
 # cbrt silently turns every out-of-gamut Lab pixel into NaN. Matches
-# geopalette._safe_cbrt.
+# pygeopalette._safe_cbrt.
 .safe_cbrt <- function(x) sign(x) * abs(x)^(1 / 3)
 
 # Inverse sRGB companding: gamma-encoded [0,1] -> linear [0,1].
@@ -78,7 +78,7 @@
 # white, black, shadow, water. Dividing the whole array and selecting
 # afterwards computes 0/0 on all of them and only discards it later.
 #
-# On ties this deliberately differs from GeoPalette in form but not in
+# On ties this deliberately differs from pygeopalette in form but not in
 # result. There the three masks overlap and are assigned in order, so when
 # two channels are both the maximum the *last* branch wins; the masks here
 # are exclusive, so the *first* wins. The values coincide either way:

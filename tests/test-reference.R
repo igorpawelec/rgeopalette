@@ -1,6 +1,6 @@
 # Check the conversions against an independent implementation.
 #
-# Agreement with GeoPalette alone proves only that the port is faithful —
+# Agreement with pygeopalette alone proves only that the port is faithful —
 # if the Python had a coefficient wrong, this package would reproduce it.
 # farver is a separate codebase with separate constants, so it catches the
 # class of error that a port cannot catch by construction.
@@ -8,7 +8,7 @@
 # farver is a Suggests, so this file is a no-op when it is absent, which is
 # also what happens on a CRAN machine that chooses not to install it.
 
-library(GeoPaletteR)
+library(rgeopalette)
 
 if (!requireNamespace("farver", quietly = TRUE)) {
   cat("farver not installed; skipping the independent reference check\n")
@@ -70,7 +70,7 @@ near(got$V, ref[, 3], 1e-6, "HSV value matches farver")
 ref <- farver::convert_colour(rgb, from = "rgb", to = "lch")
 got <- rgb_to_lchab(R, G, B)
 near(got$C, ref[, 2], 0.05, "LCHab chroma matches farver")
-# Hue only where there is a hue to compare — see ?GeoPaletteR-agreement.
+# Hue only where there is a hue to compare — see ?rgeopalette-agreement.
 keep <- got$C > 1
 near(got$Hab[keep], ref[keep, 3], 0.1, "LCHab hue matches farver above C = 1")
 

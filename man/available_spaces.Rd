@@ -13,7 +13,7 @@ A character vector of space names, sorted.
 Supported colour spaces
 }
 \details{
-The same 15 names GeoPalette uses, so `available_spaces()` agrees across
+The same 15 names pygeopalette uses, so `available_spaces()` agrees across
 the two packages.
 }
 \examples{

@@ -1,7 +1,7 @@
 # Plain-R tests: any error fails R CMD check. No testthat dependency, so
 # the package stays free of test-only requirements.
 
-library(GeoPaletteR)
+library(rgeopalette)
 
 ok <- function(cond, what) {
   if (!isTRUE(cond)) stop("FAILED: ", what, call. = FALSE)
@@ -30,7 +30,7 @@ for (s in available_spaces()) {
 }
 ok(length(convertbands(R, G, B, "dlab")) == 6L, "dlab returns six components")
 
-# Component names are the contract shared with GeoPalette; a rename here
+# Component names are the contract shared with pygeopalette; a rename here
 # silently breaks anyone reading band files written by the other package.
 ok(identical(names(convertbands(R, G, B, "lab")), c("L", "a", "b")),
    "lab components are L, a, b")
@@ -89,7 +89,7 @@ ok(is.finite(rgb_to_cam02(bl, bl, bl)$C), "black CIECAM02 chroma is finite")
 near(rgb_to_cam02(bl, bl, bl)$J, 0, 1e-9, "black is CIECAM02 J = 0")
 
 # Neutral chroma must be ~0 even though the hue angle beside it is noise —
-# see ?GeoPaletteR-agreement.
+# see ?rgeopalette-agreement.
 ok(rgb_to_lchab(g, g, g)$C < 1e-4, "grey has essentially zero LCH chroma")
 
 # ── hue is a sextant, including on ties ──────────────────────────────

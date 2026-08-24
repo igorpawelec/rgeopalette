@@ -215,7 +215,7 @@ rgb_to_lchuv <- function(R, G, B) {
 #'   `Y_lum` (luminance).
 #'
 #' @details
-#' The component names carry the `_ch` and `_lum` suffixes that GeoPalette
+#' The component names carry the `_ch` and `_lum` suffixes that pygeopalette
 #' uses, so that band files written from either package line up. `y_ch` is a
 #' chromaticity in 0-1 and `Y_lum` is a luminance; they are not the same
 #' quantity despite the letters.

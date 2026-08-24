@@ -39,9 +39,9 @@ which is a no-op when it is absent. Every colour space conversion works on
 plain numeric matrices with no spatial or graphical dependency.
 
 `tools/` is excluded from the build via `.Rbuildignore`. It holds a
-cross-check against the GeoPalette Python package, which needs Python and
+cross-check against the pygeopalette Python package, which needs Python and
 so cannot run on a CRAN machine. The agreement it measures is documented
-in `?GeoPaletteR-agreement`.
+in `?rgeopalette-agreement`.
 
 `\donttest{}` wraps the two examples that need `terra`, so the examples
 run without it.

@@ -1,4 +1,4 @@
-Package: GeoPaletteR
+Package: rgeopalette
 Type: Package
 Title: Colour Space Conversions for Geospatial Raster Data
 Version: 0.1.0
@@ -11,7 +11,7 @@ Description: Converts red-green-blue raster bands into fifteen colour
     transforms back to red-green-blue for four of them. Operations are
     vectorised over whole bands, so a scene is converted without looping
     over pixels, and the package is plain R with no compiled code and no
-    required dependencies. Results track the 'GeoPalette' Python package,
+    required dependencies. Results track the 'pygeopalette' Python package,
     which stores intermediates in single precision where R has only
     double, so agreement is to that precision rather than exact; the
     tolerances are measured and documented. Colour appearance modelling
@@ -22,7 +22,7 @@ License: GPL-3
 Encoding: UTF-8
 Depends: R (>= 3.6.0)
 Suggests: terra, farver
-URL: https://github.com/igorpawelec/GeoPaletteR
-BugReports: https://github.com/igorpawelec/GeoPaletteR/issues
+URL: https://github.com/igorpawelec/rgeopalette
+BugReports: https://github.com/igorpawelec/rgeopalette/issues
 RoxygenNote: 8.0.0
 NeedsCompilation: no

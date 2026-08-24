@@ -92,7 +92,7 @@ oklab_to_rgb <- function(L, a, b) {
 
   # H exactly 360 falls outside every sextant above and stays at the m
   # offset, which is grey rather than the red it should be. That matches
-  # GeoPalette, so it is left alone deliberately: wrap H yourself with
+  # pygeopalette, so it is left alone deliberately: wrap H yourself with
   # H %% 360 before calling if your data can contain 360.
   list(R = R + m, G = G + m, B = B + m)
 }

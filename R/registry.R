@@ -1,4 +1,4 @@
-# Space name -> conversion. The names match GeoPalette's registry exactly,
+# Space name -> conversion. The names match pygeopalette's registry exactly,
 # so a band file written from either package can be read by the other
 # without a translation table.
 .CONVERSIONS <- list(
@@ -25,7 +25,7 @@
 #' @return A character vector of space names, sorted.
 #'
 #' @details
-#' The same 15 names GeoPalette uses, so `available_spaces()` agrees across
+#' The same 15 names pygeopalette uses, so `available_spaces()` agrees across
 #' the two packages.
 #'
 #' @examples
@@ -47,7 +47,7 @@ available_spaces <- function() sort(names(.CONVERSIONS))
 #'
 #' @return A named list of matrices. The names are the component names for
 #'   that space — `L`, `a`, `b` for `"lab"`, and so on — which is also what
-#'   GeoPalette returns alongside its arrays.
+#'   pygeopalette returns alongside its arrays.
 #'
 #' @examples
 #' R <- matrix(c(255, 0, 128), 1, 3)

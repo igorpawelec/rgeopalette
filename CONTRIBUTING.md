@@ -1,7 +1,7 @@
-# Contributing to GeoPaletteR
+# Contributing to rgeopalette
 
-GeoPaletteR converts RGB rasters into perceptual colour spaces. It is the R
-twin of [GeoPalette](https://github.com/igorpawelec/GeoPalette); the two are
+rgeopalette converts RGB rasters into perceptual colour spaces. It is the R
+twin of [pygeopalette](https://github.com/igorpawelec/pygeopalette); the two are
 developed together and are meant to agree.
 
 Bug reports, ideas and pull requests are all welcome.
@@ -33,7 +33,7 @@ terra, which is optional and used only for the raster bridge.
 
 ```bash
 R CMD build .
-R CMD check --as-cran GeoPaletteR_X.Y.Z.tar.gz
+R CMD check --as-cran rgeopalette_X.Y.Z.tar.gz
 ```
 
 Tests are plain R scripts in `tests/`, run by `R CMD check`; a failure there
@@ -46,21 +46,21 @@ problems the tests cannot see.
 `man/` is generated. Edit the roxygen comments above the function in `R/`,
 then run `roxygen2::roxygenise()`; never edit a `.Rd` by hand.
 
-This is not a style preference. Every file in rHRG's `man/` once carried a
+This is not a style preference. Every file in rcacumen's `man/` once carried a
 hand-written header instead of roxygen2's marker, so `roxygenise()` silently
 skipped all of them and the directory drifted from the comments it claimed to
 come from. The only part `R CMD check` notices is argument defaults, via
 `codoc`; prose can be wrong indefinitely.
 
-## Agreement with GeoPalette
+## Agreement with pygeopalette
 
 ```bash
-python3 tools/generate_geopalette_reference.py   # needs geopalette installed
-Rscript tools/cross_validate_against_geopalette.R
+python3 tools/generate_pygeopalette_reference.py   # needs pygeopalette installed
+Rscript tools/cross_validate_against_pygeopalette.R
 ```
 
-The two cannot be bit-identical and are not meant to be: GeoPalette computes
-in float32, GeoPaletteR in float64. The agreed tolerance is **1.7e-6**, and
+The two cannot be bit-identical and are not meant to be: pygeopalette computes
+in float32, rgeopalette in float64. The agreed tolerance is **1.7e-6**, and
 `R/agreement.R` documents both it and the one real divergence — hue on a
 neutral colour, where the two disagree by construction rather than by
 rounding.
@@ -75,14 +75,14 @@ avoid.
 
 ## The pinned twin
 
-The agreement job installs GeoPalette from a **tag**, not the tip of its main
+The agreement job installs pygeopalette from a **tag**, not the tip of its main
 branch — see `.github/workflows/R-CMD-check.yaml`. Unpinned, a commit in
-GeoPalette could turn this repository's CI red without anything changing here,
+pygeopalette could turn this repository's CI red without anything changing here,
 and the failure would read as a defect in this package.
 
-The cost is that the pin goes stale. When GeoPalette releases and the conversions
+The cost is that the pin goes stale. When pygeopalette releases and the conversions
 changes, bump the tag in the workflow and re-run the agreement job. A stale
-pin proves agreement against an old GeoPalette, which is quieter than a red
+pin proves agreement against an old pygeopalette, which is quieter than a red
 build and therefore worse.
 
 ## Pull requests
@@ -100,10 +100,10 @@ build and therefore worse.
 
 The checklist exists because of a specific failure. `max_iters` changed
 default in 0.3.0, and that one change broke CI in both HRG twins at once —
-pyHRG with `int | None`, a runtime `TypeError` before Python 3.10, and rHRG
+pycacumen with `int | None`, a runtime `TypeError` before Python 3.10, and rcacumen
 with a `man/` page still documenting `200L`, which `R CMD check` reports as a
 codoc WARNING and the workflow treats as a failure. Neither was noticed.
-**pyHRG then tagged 0.3.0, 0.4.0 and 0.5.0 with the workflow red**; rHRG
+**pycacumen then tagged 0.3.0, 0.4.0 and 0.5.0 with the workflow red**; rcacumen
 shipped two the same way and rgeoadaptels two more.
 
 Local checks passed in every one of those cases. They were run on one R
@@ -111,7 +111,7 @@ version, on one operating system, by someone who already knew what the change
 was meant to do. The matrix is the part that disagrees.
 
 1. Update `NEWS.md`. If the output changes, say so in those words.
-2. **`roxygen2::roxygenise()`.** Skipping this is what broke rHRG: `man/`
+2. **`roxygen2::roxygenise()`.** Skipping this is what broke rcacumen: `man/`
    kept a default the code no longer had, and `?grow_crowns` told readers the
    cap was still there.
 3. Bump `Version:` in `DESCRIPTION`, and the version and `date-released` in
@@ -128,7 +128,7 @@ was meant to do. The matrix is the part that disagrees.
    This is the step that was missing. Either open the Actions tab, or:
 
    ```bash
-   curl -s "https://api.github.com/repos/igorpawelec/GeoPaletteR/actions/runs?per_page=1" | python -c "import json,sys; r=json.load(sys.stdin)['workflow_runs'][0]; print(r['head_sha'][:7], r['status'], r['conclusion'])"
+   curl -s "https://api.github.com/repos/igorpawelec/rgeopalette/actions/runs?per_page=1" | python -c "import json,sys; r=json.load(sys.stdin)['workflow_runs'][0]; print(r['head_sha'][:7], r['status'], r['conclusion'])"
    ```
 
    `gh run list` is nicer if the GitHub CLI is installed; it is not
@@ -143,4 +143,4 @@ history either way.
 
 ## Licence
 
-GeoPaletteR is GPLv3. Contributions are accepted under the same licence.
+rgeopalette is GPLv3. Contributions are accepted under the same licence.

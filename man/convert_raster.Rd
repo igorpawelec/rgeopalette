@@ -24,7 +24,7 @@ Convert a raster to a colour space and write it out
 }
 \details{
 Band names in the output are the component names of the space, so a
-file written here is self-describing and lines up with what GeoPalette
+file written here is self-describing and lines up with what pygeopalette
 writes for the same scene.
 
 Requires \pkg{terra}.

@@ -105,7 +105,7 @@ rgb_to_hsi <- function(R, G, B) {
   h_rad[flip] <- 2 * pi - h_rad[flip]
   H <- h_rad * 180 / pi
   # Achromatic pixels reach here as NaN by construction (den forced to NaN
-  # above) and become 0, matching GeoPalette's nan_to_num. Genuine NA in the
+  # above) and become 0, matching pygeopalette's nan_to_num. Genuine NA in the
   # input is left alone: is.nan() is FALSE for NA.
   H[is.nan(H)] <- 0
 

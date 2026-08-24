@@ -1,8 +1,8 @@
-# GeoPaletteR
+# rgeopalette
 
-<img src="https://raw.githubusercontent.com/igorpawelec/GeoPaletteR/main/www/geopaletter_logo.png" alt="GeoPaletteRlogo" align="right" width="200"/>
+<img src="https://raw.githubusercontent.com/igorpawelec/rgeopalette/main/www/geopaletter_logo.png" alt="rgeopalettelogo" align="right" width="200"/>
 
-[![R-CMD-check](https://github.com/igorpawelec/GeoPaletteR/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/igorpawelec/GeoPaletteR/actions/workflows/R-CMD-check.yaml)
+[![R-CMD-check](https://github.com/igorpawelec/rgeopalette/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/igorpawelec/rgeopalette/actions/workflows/R-CMD-check.yaml)
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](LICENSE)
 [![R](https://img.shields.io/badge/R-%3E%3D%203.6-blue.svg)](https://www.r-project.org)
 
@@ -12,16 +12,16 @@ Plain R. No compiled code, no Rcpp, no required dependencies, and `terra`
 only if you want to read files.
 
 > **Python users:** the same conversions are in
-> [GeoPalette](https://github.com/igorpawelec/GeoPalette). The two are
+> [pygeopalette](https://github.com/igorpawelec/pygeopalette). The two are
 > separate repositories because their tooling and idioms do not mix. They
-> are close, but — unlike the pyHRG/rHRG pair — they are **not identical**,
-> and cannot be. See [Agreement with GeoPalette](#agreement-with-geopalette).
+> are close, but — unlike the pycacumen/rcacumen pair — they are **not identical**,
+> and cannot be. See [Agreement with pygeopalette](#agreement-with-pygeopalette).
 
 ## Install
 
 ```r
 # install.packages("remotes")
-remotes::install_github("igorpawelec/GeoPaletteR")
+remotes::install_github("igorpawelec/rgeopalette")
 ```
 
 ## Use
@@ -30,7 +30,7 @@ Every conversion takes three bands as numeric matrices on the 0-255 sRGB
 scale and returns a named list of matrices, one per component:
 
 ```r
-library(GeoPaletteR)
+library(rgeopalette)
 
 lab <- rgb_to_lab(R, G, B)
 lab$L        # 0-100
@@ -78,9 +78,9 @@ There is no single convention, and it bites when bands are stacked:
 | `ycbcr` | studio swing, Y 16-235 |
 | inverses | return 0-**1**, not 0-255 |
 
-## Agreement with GeoPalette
+## Agreement with pygeopalette
 
-Not bit-for-bit, and this is stated rather than glossed over. GeoPalette
+Not bit-for-bit, and this is stated rather than glossed over. pygeopalette
 stores its intermediates in single precision; R has no single-precision
 numeric type, so this package computes in double throughout. The two part
 company at about the seventh significant figure by construction.
@@ -91,8 +91,8 @@ all six primaries and secondaries — every one of the 60 components of the
 component's own range**. Reproduce it:
 
 ```sh
-python3 tools/generate_geopalette_reference.py
-Rscript tools/cross_validate_against_geopalette.R
+python3 tools/generate_pygeopalette_reference.py
+Rscript tools/cross_validate_against_pygeopalette.R
 ```
 
 The double-precision result is the *more* accurate of the two: CIELAB `L*`
@@ -102,7 +102,7 @@ matches the independent `farver` implementation to 1.4e-14 here.
 
 `Hab`, `Huv`, `hz` and CIECAM02 `h` come from `atan2()` over an opponent
 pair that is exactly zero for a neutral pixel, so the angle is decided by
-floating-point noise. On pure greys GeoPalette reports 0, 90 or 141.34
+floating-point noise. On pure greys pygeopalette reports 0, 90 or 141.34
 depending on the pixel; this package reports 158.199. Both are artefacts,
 neither is meaningful, and the difference reaches 158 degrees.
 
@@ -119,9 +119,9 @@ achromatic pixels in both packages.
 
 ## Citation
 
-Pawelec, I. (2026). *GeoPaletteR: Colour Space Conversions for Geospatial
+Pawelec, I. (2026). *rgeopalette: Colour Space Conversions for Geospatial
 Raster Data*. R package version 0.1.0.
-https://github.com/igorpawelec/GeoPaletteR
+https://github.com/igorpawelec/rgeopalette
 
 Machine-readable metadata, including the papers the colour appearance models
 come from, is in [`CITATION.cff`](CITATION.cff).

@@ -1,7 +1,7 @@
-"""Write reference bands from GeoPalette for cross_validate_against_geopalette.R.
+"""Write reference bands from pygeopalette for cross_validate_against_pygeopalette.R.
 
-    pip install geopalette
-    python3 tools/generate_geopalette_reference.py
+    pip install pygeopalette
+    python3 tools/generate_pygeopalette_reference.py
 
 Deliberately covers the awkward pixels as well as random ones: pure
 primaries, black, white, greys and near-greys are where hue is undefined
@@ -12,7 +12,7 @@ Copyright (C) 2025 Igor Pawelec. Licence: GPLv3.
 import os
 
 import numpy as np
-import geopalette as gp
+import pygeopalette as gp
 
 OUT = os.path.join("tools", "reference")
 os.makedirs(OUT, exist_ok=True)
@@ -78,4 +78,4 @@ for tag, out in (("lab_to_rgb", gp.lab_to_rgb(*lab)),
 
 print("reference for %d spaces + 4 inverses written to %s/" %
       (len(spaces), OUT))
-print("geopalette %s" % gp.__version__)
+print("pygeopalette %s" % gp.__version__)
