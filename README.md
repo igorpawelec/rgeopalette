@@ -1,6 +1,6 @@
 # rgeopalette
 
-<img src="https://raw.githubusercontent.com/igorpawelec/rgeopalette/main/www/geopaletter_logo.png" alt="rgeopalettelogo" align="right" width="200"/>
+<img src="https://raw.githubusercontent.com/igorpawelec/rgeopalette/main/www/rgeopalette.png" alt="rgeopalettelogo" align="right" width="200"/>
 
 [![R-CMD-check](https://github.com/igorpawelec/rgeopalette/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/igorpawelec/rgeopalette/actions/workflows/R-CMD-check.yaml)
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](LICENSE)
